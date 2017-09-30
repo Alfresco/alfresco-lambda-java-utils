@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: EmptyS3BucketTest
+
+Resources:
+  
+  TestBucket:
+    Type: AWS::S3::Bucket
+
+  TestIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - s3.amazonaws.com
+                - lambda.amazonaws.com
+                - events.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: s3Access
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:DeleteBucket
+                  - s3:ListBucketVersions
+                  - s3:DeleteObject
+                  - s3:DeleteObjectVersion
+                  - s3:PutObject
+                Resource:
+                  - "*"
+
+  TestLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Description: Lambda function that empties and then delets the given s3 bucket
+      Handler: org.alfresco.aws.lambda.handlers.cfn.EmptyS3Bucket
+      Role: !GetAtt TestIamRole.Arn
+      Code:
+        S3Bucket: [code-bucket]
+        S3Key: alfresco-lambda-java-utils-1.0-SNAPSHOT.jar
+      Runtime: java8
+      MemorySize: 256
+      Timeout: 60
+
+  TestCustomResource:
+    Type: Custom::EmptyTestBucket
+    Properties:
+      ServiceToken: !GetAtt TestLambdaFunction.Arn
+      BucketName: !Ref TestBucket
+      
+Outputs:
+
+  BucketName:
+    Description: The name of the test bucket
+    Value: !Ref TestBucket
+    
