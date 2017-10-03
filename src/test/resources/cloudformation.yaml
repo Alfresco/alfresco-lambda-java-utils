@@ -45,7 +45,7 @@ Resources:
       Role: !GetAtt TestIamRole.Arn
       Code:
         S3Bucket: [code-bucket]
-        S3Key: alfresco-lambda-java-utils-1.0-SNAPSHOT.jar
+        S3Key: alfresco-lambda-java-utils.jar
       Runtime: java8
       MemorySize: 256
       Timeout: 60

@@ -46,7 +46,7 @@ public class EmptyS3BucketIntegrationTest
 {
     private static final String CODE_BUCKET_NAME_PREFIX = "empty-s3-bucket-test-code-";
     private static final String STACK_NAME_PREFIX = "empty-s3-bucket-test-";
-    private static final String JAR_FILE_NAME = "alfresco-lambda-java-utils-1.0-SNAPSHOT.jar";
+    private static final String JAR_FILE_NAME = "alfresco-lambda-java-utils.jar";
     private static final String CFN_FILE_NAME = "cloudformation.yaml";
     private static final String REPLACE_TOKEN = "[code-bucket]";
     
