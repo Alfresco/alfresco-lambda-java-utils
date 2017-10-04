@@ -13,6 +13,8 @@
       <aws.sdk.version>1.11.202</aws.sdk.version>
       <aws.lambda.core.version>1.1.0</aws.lambda.core.version>
       <junit.version>4.12</junit.version>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
    </properties>
 
    <scm>
@@ -68,7 +70,6 @@
    </dependencies>
 
    <build>
-      <finalName>alfresco-lambda-java-utils</finalName>
       <plugins>
          <!-- skip unit tests as the project only contains integration tests -->
          <plugin>
@@ -98,6 +99,7 @@
                </execution>
             </executions>
          </plugin>
+         <!--
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
@@ -131,6 +133,7 @@
                 </archive>
             </configuration>
           </plugin>
+          -->
       </plugins>
    </build>
    <distributionManagement>
