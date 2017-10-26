@@ -22,8 +22,19 @@ public class LambdaProxyRequest
     private String body;
     private Map<String, String> pathParameters;
     private Map<String, String> queryParameters;
+    private Map<String, String> headers;
 
-    public Map<String, String> getPathParameters() 
+    public Map<String, String> getHeaders()
+    {
+        return headers;
+    }
+
+    public void setHeaders(Map<String, String> headers)
+    {
+        this.headers = headers;
+    }
+
+    public Map<String, String> getPathParameters()
     {
         return pathParameters;
     }
