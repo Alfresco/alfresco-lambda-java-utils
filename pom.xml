@@ -3,7 +3,7 @@
    <groupId>org.alfresco</groupId>
    <artifactId>alfresco-lambda-java-utils</artifactId>
    <packaging>jar</packaging>
-   <version>1.1</version>
+   <version>1.2-SNAPSHOT</version>
    <name>alfresco-lambda-java-utils</name>
    <description>Collection of utility classes for Java based Lambda functions.</description>
    <url>https://github.com/Alfresco/alfresco-lambda-java-utils</url>
@@ -20,7 +20,7 @@
       <connection>scm:git:https://github.com/Alfresco/alfresco-lambda-java-utils.git</connection>
       <developerConnection>scm:git:https://github.com/Alfresco/alfresco-lambda-java-utils.git</developerConnection>
       <url>https://github.com/Alfresco/alfresco-lambda-java-utils</url>
-      <tag>alfresco-lambda-java-utils-1.1</tag>
+      <tag>HEAD</tag>
    </scm>
 
    <licenses>
