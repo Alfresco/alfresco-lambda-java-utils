@@ -20,9 +20,58 @@ import com.amazonaws.services.lambda.runtime.Context;
  */
 public class Logger
 {
+    public static int LEVEL_OFF = 0;
+    public static int LEVEL_ERROR = 1;
+    public static int LEVEL_WARN = 2;
+    public static int LEVEL_INFO = 3;
+    public static int LEVEL_DEBUG = 4;
+    
+    private static int InternalLogLevel = LEVEL_INFO;
+    
+    static
+    {
+        try
+        {
+            String level = System.getenv("LOG_LEVEL");
+            if (level != null && !level.isEmpty())
+            {
+                if (level.equalsIgnoreCase("ERROR"))
+                {
+                    InternalLogLevel = LEVEL_ERROR;
+                }
+                else if (level.equalsIgnoreCase("WARN"))
+                {
+                    InternalLogLevel = LEVEL_WARN;
+                }
+                else if (level.equalsIgnoreCase("DEBUG"))
+                {
+                    InternalLogLevel = LEVEL_DEBUG;
+                }
+                else
+                {
+                    InternalLogLevel = LEVEL_INFO;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            InternalLogLevel = LEVEL_INFO;
+        }
+    }
+    
+    public static int getLogLevel()
+    {
+        return InternalLogLevel;
+    }
+    
+    public static void setLogLevel(int logLevel)
+    {
+        InternalLogLevel = logLevel;
+    }
+    
     public static void logInfo(String message, Context context)
     {
-        if (context != null)
+        if (context != null && InternalLogLevel >= LEVEL_INFO)
         {
             context.getLogger().log("INFO " + message);
         }
@@ -30,7 +79,7 @@ public class Logger
     
     public static void logWarn(String message, Context context)
     {
-        if (context != null)
+        if (context != null && InternalLogLevel >= LEVEL_WARN)
         {
             context.getLogger().log("WARN " + message);
         }
@@ -38,7 +87,7 @@ public class Logger
     
     public static void logDebug(String message, Context context)
     {
-        if (context != null)
+        if (context != null && InternalLogLevel >= LEVEL_DEBUG)
         {
             context.getLogger().log("DEBUG " + message);
         }
@@ -46,7 +95,7 @@ public class Logger
     
     public static void logError(String message, Context context)
     {
-        if (context != null)
+        if (context != null && InternalLogLevel >= LEVEL_ERROR)
         {
             context.getLogger().log("ERROR " + message);
         }

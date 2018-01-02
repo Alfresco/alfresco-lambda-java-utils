@@ -20,10 +20,65 @@ public class LambdaProxyRequest
 {
     private String httpMethod;
     private String body;
+    private String path;
+    private String resource;
+    private boolean base64Encoded = false;
     private Map<String, String> pathParameters;
-    private Map<String, String> queryParameters;
+    private Map<String, String> queryStringParameters;
     private Map<String, String> headers;
+    private Map<String, String> stageVariables;
+    private Map<String, Object> requestContext;
+     
+    public String getHttpMethod() 
+    {
+        return httpMethod;
+    }
 
+    public void setHttpMethod(String httpMethod) 
+    {
+        this.httpMethod = httpMethod;
+    }
+
+    public String getBody() 
+    {
+        return body;
+    }
+
+    public void setBody(String body) 
+    {
+        this.body = body;
+    }
+    
+    public String getPath() 
+    {
+        return path;
+    }
+
+    public void setPath(String path) 
+    {
+        this.path = path;
+    }
+    
+    public String getResource() 
+    {
+        return resource;
+    }
+
+    public void setResource(String resource) 
+    {
+        this.resource = resource;
+    }
+    
+    public boolean isBase64Encoded()
+    {
+        return this.base64Encoded;
+    }
+
+    public void setBase64Encoded(boolean base64Encoded)
+    {
+        this.base64Encoded = base64Encoded;
+    }
+    
     public Map<String, String> getHeaders()
     {
         return headers;
@@ -44,33 +99,63 @@ public class LambdaProxyRequest
         this.pathParameters = pathParameters;
     }
 
-    public Map<String, String> getQueryParameters() 
+    public Map<String, String> getQueryStringParameters() 
     { 
-        return queryParameters; 
+        return queryStringParameters; 
     }
 
-    public void setQueryParameters(Map<String, String> queryParameters) 
+    public void setQueryStringParameters(Map<String, String> queryStringParameters) 
     { 
-        this.queryParameters = queryParameters; 
+        this.queryStringParameters = queryStringParameters; 
+    }
+    
+    public Map<String, String> getStageVariables() 
+    { 
+        return stageVariables; 
     }
 
-    public String getHttpMethod() 
-    {
-        return httpMethod;
+    public void setStageVariables(Map<String, String> stageVariables) 
+    { 
+        this.stageVariables = stageVariables; 
+    }
+    
+    public Map<String, Object> getRequestContext() 
+    { 
+        return requestContext; 
     }
 
-    public void setHttpMethod(String httpMethod) 
-    {
-        this.httpMethod = httpMethod;
+    public void setRequestContext(Map<String, Object> requestContext) 
+    { 
+        this.requestContext = requestContext; 
     }
-
-    public String getBody() 
+    
+    @Override
+    public String toString() 
     {
-        return body;
-    }
-
-    public void setBody(String body) 
-    {
-        this.body = body;
+        StringBuffer buffer = new StringBuffer("{");
+        
+        buffer.append("httpMethod='");
+        buffer.append(this.httpMethod);
+        buffer.append("', path='");
+        buffer.append(this.path);
+        buffer.append("', body='");
+        buffer.append(this.body);
+        buffer.append("', resource='");
+        buffer.append(this.resource);
+        buffer.append("', base64Encoded=");
+        buffer.append(this.base64Encoded);
+        buffer.append(", headers=");
+        buffer.append(this.headers);
+        buffer.append(", queryStringParameters=");
+        buffer.append(this.queryStringParameters);
+        buffer.append(", pathParameters=");
+        buffer.append(this.pathParameters);
+        buffer.append(", requestContext=");
+        buffer.append(this.requestContext);
+        buffer.append(", stageVariables=");
+        buffer.append(this.stageVariables);
+        buffer.append("}");
+        
+        return buffer.toString();
     }
 }

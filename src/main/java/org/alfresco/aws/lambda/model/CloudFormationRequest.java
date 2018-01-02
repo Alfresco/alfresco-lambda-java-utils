@@ -37,21 +37,34 @@ public class CloudFormationRequest implements Serializable {
     public Map<String, Object> ResourceProperties;
     public Map<String, Object> OldResourceProperties;
 
-    public CloudFormationRequest() {
+    public CloudFormationRequest() 
+    {
     }
 
     @Override
-    public String toString() {
-        return "CloudFormationRequest {" +
-                "RequestType='" + RequestType + '\'' +
-                ", ResponseURL='" + ResponseURL + '\'' +
-                ", StackId='" + StackId + '\'' +
-                ", RequestId='" + RequestId + '\'' +
-                ", ResourceType='" + ResourceType + '\'' +
-                ", LogicalResourceId='" + LogicalResourceId + '\'' +
-                ", ResourceProperties=" + ResourceProperties +
-                ", OldResourceProperties=" + OldResourceProperties +
-                "}";
+    public String toString() 
+    {
+        StringBuffer buffer = new StringBuffer("{");
+        
+        buffer.append("RequestType='");
+        buffer.append(RequestType);
+        buffer.append("', ResponseURL='");
+        buffer.append(ResponseURL);
+        buffer.append("', StackId='");
+        buffer.append(this.StackId);
+        buffer.append("', RequestId='");
+        buffer.append(RequestId);
+        buffer.append("', ResourceType='");
+        buffer.append(ResourceType);
+        buffer.append("', LogicalResourceId='");
+        buffer.append(LogicalResourceId);
+        buffer.append("', ResourceProperties=");
+        buffer.append(ResourceProperties);
+        buffer.append(", OldResourceProperties=");
+        buffer.append(OldResourceProperties);
+        buffer.append("}");
+        
+        return buffer.toString();
     }
 }
 

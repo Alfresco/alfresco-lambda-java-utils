@@ -51,4 +51,20 @@ public class LambdaProxyResponse
     {
         this.body = body;
     }
+    
+    @Override
+    public String toString() 
+    {
+        StringBuffer buffer = new StringBuffer("{");
+        
+        buffer.append("statusCode='");
+        buffer.append(this.statusCode);
+        buffer.append("', body='");
+        buffer.append(this.body);
+        buffer.append("', headers=");
+        buffer.append(this.headers);
+        buffer.append("}");
+        
+        return buffer.toString();
+    }
 }
