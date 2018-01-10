@@ -22,7 +22,7 @@ public class LambdaProxyRequest
     private String body;
     private String path;
     private String resource;
-    private boolean base64Encoded = false;
+    private boolean isBase64Encoded = false;
     private Map<String, String> pathParameters;
     private Map<String, String> queryStringParameters;
     private Map<String, String> headers;
@@ -69,14 +69,14 @@ public class LambdaProxyRequest
         this.resource = resource;
     }
     
-    public boolean isBase64Encoded()
+    public boolean getIsBase64Encoded()
     {
-        return this.base64Encoded;
+        return this.isBase64Encoded;
     }
 
-    public void setBase64Encoded(boolean base64Encoded)
+    public void setIsBase64Encoded(boolean isBase64Encoded)
     {
-        this.base64Encoded = base64Encoded;
+        this.isBase64Encoded = isBase64Encoded;
     }
     
     public Map<String, String> getHeaders()
@@ -142,8 +142,8 @@ public class LambdaProxyRequest
         buffer.append(this.body);
         buffer.append("', resource='");
         buffer.append(this.resource);
-        buffer.append("', base64Encoded=");
-        buffer.append(this.base64Encoded);
+        buffer.append("', isBase64Encoded=");
+        buffer.append(this.isBase64Encoded);
         buffer.append(", headers=");
         buffer.append(this.headers);
         buffer.append(", queryStringParameters=");
