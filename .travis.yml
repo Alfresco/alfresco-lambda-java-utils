@@ -12,9 +12,9 @@ cache:
     - ${HOME}/.m2/repository
     - ${HOME}/artifacts
 
-branches:
-  only:
-    - master
+# branches:
+#   only:
+#     - - /^OPSEXP-.*$/
 
 stages:
   - build and test
