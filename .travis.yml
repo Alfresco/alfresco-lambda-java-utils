@@ -1,0 +1,27 @@
+---
+language: java
+jdk: openjdk11
+dist: xenial
+
+git:
+  depth: false
+  quiet: true
+
+cache:
+  directories:
+    - ${HOME}/.m2/repository
+    - ${HOME}/artifacts
+
+branches:
+  only:
+    - master
+
+stages:
+  - build and test
+  - release
+
+jobs:
+  include:
+    - stage: build and test
+    name: "Build and Test"
+    script: mvn clean install
