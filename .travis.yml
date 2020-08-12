@@ -23,5 +23,5 @@ stages:
 jobs:
   include:
     - stage: build and test
-    name: "Build and Test"
-    script: mvn clean install
+      name: "Build and Test"
+      script: mvn clean install
