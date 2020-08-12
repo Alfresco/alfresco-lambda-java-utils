@@ -9,8 +9,8 @@
    <url>https://github.com/Alfresco/alfresco-lambda-java-utils</url>
 
    <properties>
-      <aws.sdk.version>1.11.202</aws.sdk.version>
-      <aws.lambda.core.version>1.1.0</aws.lambda.core.version>
+      <aws.sdk.version>1.11.839</aws.sdk.version>
+      <aws.lambda.core.version>1.2.0</aws.lambda.core.version>
       <junit.version>4.12</junit.version>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
