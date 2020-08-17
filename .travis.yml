@@ -24,4 +24,4 @@ jobs:
   include:
     - stage: build and test
       name: "Build and Test"
-      script: mvn clean install
+      script: sysctl net.ipv4.ip_forward=1 | mvn clean install
