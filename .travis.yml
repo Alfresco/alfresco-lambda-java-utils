@@ -24,4 +24,9 @@ jobs:
   include:
     - stage: build and test
       name: "Build and Test"
-      script: sysctl net.ipv4.ip_forward=1 | mvn clean install
+      script:
+        - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+        - sysctl net.ipv4.ip_forward=1
+        - mvn clean install
