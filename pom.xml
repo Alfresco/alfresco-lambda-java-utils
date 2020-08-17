@@ -11,10 +11,12 @@
 
    <properties>
       <aws.sdk.version>1.11.839</aws.sdk.version>
-      <aws.lambda.core.version>1.2.0</aws.lambda.core.version>
+      <aws.lambda.core.version>1.2.1</aws.lambda.core.version>
       <junit.version>4.12</junit.version>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
 
    <scm>
