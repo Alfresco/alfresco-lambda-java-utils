@@ -11,8 +11,7 @@ export AWS_SECRET_ACCESS_KEY=${CREATE_BUCKET_AWS_SECRET_KEY}
 export BUCKET_NAME="travis-lambda-java-utils-${TRAVIS_BUILD_NUMBER}-${TRAVIS_JOB_NUMBER}"
 
 mvn -B -U clean install \
-  -Dbuildnumber=${TRAVIS_BUILD_NUMBER} \
-  -Dconnector.s3.bucketName=${BUCKET_NAME}
+  -Dbuildnumber=${TRAVIS_BUILD_NUMBER}
 
 
 popd

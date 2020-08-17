@@ -26,4 +26,4 @@ jobs:
       name: "Build and Test"
 #      before_install: bash _ci/init.sh
       script: bash _ci/build.sh
-      after_script: bash _ci/cleanup.sh
+#      after_script: bash _ci/cleanup.sh
