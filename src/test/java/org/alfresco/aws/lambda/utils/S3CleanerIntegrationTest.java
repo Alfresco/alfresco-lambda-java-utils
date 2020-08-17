@@ -46,7 +46,8 @@ public class S3CleanerIntegrationTest
     public static void createClient() throws Exception
     {
         // setup S3 client
-        s3 = AmazonS3ClientBuilder.defaultClient();
+//        s3 = AmazonS3ClientBuilder.defaultClient();
+        s3 = AmazonS3ClientBuilder.standard().build();
     }
     
     @Before
