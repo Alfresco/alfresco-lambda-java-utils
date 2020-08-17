@@ -85,18 +85,26 @@
          <artifactId>jaxb-api</artifactId>
          <version>2.1</version>
       </dependency>
+      <dependency>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-compiler-plugin</artifactId>
+         <version>3.8.1</version>
+         <type>maven-plugin</type>
+      </dependency>
    </dependencies>
 
    <build>
       <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-<!--            <configuration>-->
-<!--               <source>1.6</source>-->
-<!--               <target>1.6</target>-->
-<!--            </configuration>-->
-         </plugin>
+<!--         <plugin>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-compiler-plugin</artifactId>-->
+<!--            <version>3.8.1</version>-->
+<!--            <type>maven-plugin</type>-->
+<!--&lt;!&ndash;            <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;               <source>1.6</source>&ndash;&gt;-->
+<!--&lt;!&ndash;               <target>1.6</target>&ndash;&gt;-->
+<!--&lt;!&ndash;            </configuration>&ndash;&gt;-->
+<!--         </plugin>-->
          <!-- skip unit tests as the project only contains integration tests -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
