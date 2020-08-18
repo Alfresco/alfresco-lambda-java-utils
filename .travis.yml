@@ -30,13 +30,13 @@ jobs:
         - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
         - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+        - export  AWS_REGION=${AWS_REGION}
         - mvn clean install
-        - - echo "!!!!!!!!!!!!!!!!!!!!!!!!!got here"
     - name: "Push to Nexus"
       stage: release
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
-      if: branch = master AND type != pull_request AND commit_message = *"[release]"*
+      if: branch == master AND type != pull_request AND commit_message == *"[release]"*
 #      script: |
 #        if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
       script:
