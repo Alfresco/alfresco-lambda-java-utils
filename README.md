@@ -1,6 +1,6 @@
 # Welcome
 
-This repository contains a collection of utility classes for Java based Lambda functions. 
+This repository contains a collection of utility classes for Java based Lambda functions.. 
 
 # Build & Test
 
