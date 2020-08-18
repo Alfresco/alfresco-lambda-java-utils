@@ -18,9 +18,10 @@ git:
   depth: false
   quiet: true
 
+
  branches:
    only:
-     - /^OPSEXP-.*$/
+     - - /^OPSEXP-.*$/
      - master
 
 stages:
