@@ -18,11 +18,10 @@ git:
   depth: false
   quiet: true
 
-
- branches:
-   only:
-     - /OPSEXP-.*/
-     - master
+# branches:
+#   only:
+#     - /^OPSEXP-.*$/
+#     - master
 
 stages:
   - build and test
