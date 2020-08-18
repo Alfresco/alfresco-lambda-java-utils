@@ -21,7 +21,7 @@ git:
 
  branches:
    only:
-     - - /^OPSEXP-.*$/
+     - /OPSEXP-.*/
      - master
 
 stages:
