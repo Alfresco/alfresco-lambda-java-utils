@@ -1,20 +1,27 @@
 ---
-language: java
-jdk: openjdk11
 dist: xenial
+sudo: required
+language: java
+jdk:
+  - openjdk11
+
+# the cache can grow constantly
+before_cache:
+  - rm -rf $HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils
+
+cache:
+  directories:
+    - ${HOME}/.m2
+    - ${HOME}/.m2/repository
 
 git:
   depth: false
   quiet: true
 
-cache:
-  directories:
-    - ${HOME}/.m2/repository
-    - ${HOME}/artifacts
-
-# branches:
-#   only:
-#     - - /^OPSEXP-.*$/
+ branches:
+   only:
+     - /^OPSEXP-.*$/
+     - master
 
 stages:
   - build and test
@@ -28,7 +35,6 @@ jobs:
         - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
         - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
-#        - sudo sysctl net.ipv4.ip_forward=1
         - mvn clean install
 #    - stage: release
 #      name: "Release"
