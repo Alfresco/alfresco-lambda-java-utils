@@ -38,7 +38,7 @@ jobs:
         branch: master
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
-#      if: branch == master AND type != pull_request AND commit_message == *"[release]"*
+      if: branch = master AND type != pull_request AND commit_message = *"[release]"*
 #      script: |
 #        if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
       script:
