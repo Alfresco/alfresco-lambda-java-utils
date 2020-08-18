@@ -90,5 +90,10 @@ public class OfflineLambdaContext implements Context
                 System.out.println(string);
             }
         }
+
+        public void log(byte[] bytes)
+        {
+
+        }
     }
 }
