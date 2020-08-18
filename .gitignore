@@ -11,3 +11,6 @@ target
 
 # Package Files
 *.jar
+/alfresco-lambda-java-utils.iml
+/.idea/
+

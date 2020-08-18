@@ -1,0 +1,46 @@
+---
+dist: xenial
+sudo: required
+language: java
+jdk:
+  - openjdk11
+
+# the cache can grow constantly
+before_cache:
+  - rm -rf $HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils
+
+cache:
+  directories:
+    - ${HOME}/.m2
+    - ${HOME}/.m2/repository
+
+git:
+  depth: false
+  quiet: true
+
+stages:
+  - build and test
+  - release
+
+jobs:
+  include:
+    - stage: build and test
+      name: "Build and Test"
+      script:
+        - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+        - mvn clean install
+    - stage: release
+      name: "Push to Nexus"
+      if: branch = master AND type != pull_request AND commit_message = *"[release]"*
+      before_install:
+        - "cp .travis.settings.xml $HOME/.m2/settings.xml"
+#      script: |
+#        if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
+      script:
+        # Use full history for release
+        - git checkout -B "${TRAVIS_BRANCH}"
+        # Add email to link commits to user
+        - git config user.email "${GIT_EMAIL}"
+        - echo "got here"
