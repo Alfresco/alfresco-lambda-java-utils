@@ -41,12 +41,3 @@ jobs:
       if: branch = master AND type != pull_request AND commit_message ~= /\[trigger release\]/
       script:
         - echo "I am here"
-#      script:
-#        - |
-#          if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
-#          then
-#            git checkout -B "${TRAVIS_BRANCH}"
-#            git config user.email "${GIT_EMAIL}"
-#            echo "WORKS"
-#          fi
-#          echo "NOPE1"
