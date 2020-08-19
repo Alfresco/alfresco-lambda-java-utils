@@ -38,12 +38,15 @@ jobs:
         branch: master
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
+      if: branch = master
       script:
-        - |
-          if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
-          then
-            git checkout -B "${TRAVIS_BRANCH}"
-            git config user.email "${GIT_EMAIL}"
-            echo "WORKS"
-          fi
-          echo "NOPE1"
+        - echo "I am here"
+#      script:
+#        - |
+#          if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
+#          then
+#            git checkout -B "${TRAVIS_BRANCH}"
+#            git config user.email "${GIT_EMAIL}"
+#            echo "WORKS"
+#          fi
+#          echo "NOPE1"
