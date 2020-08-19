@@ -38,7 +38,7 @@ jobs:
         branch: master
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
-#      if: branch = master
+      if: branch = master
       script:
         - echo "I am here"
 #      script:
