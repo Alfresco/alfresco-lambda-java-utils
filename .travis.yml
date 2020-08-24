@@ -31,7 +31,7 @@ jobs:
     - name: "Push to  Nexus"
       stage: release
       before_script:
-      if: branch = master AND commit_message = /(^release$)/
+      if: branch = master AND commit_message =~ /\[release\]/
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
       script:
