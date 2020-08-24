@@ -28,7 +28,7 @@ jobs:
       stage: build
       script:
         - mvn clean install
-    - name: "Push to Nexus"
+    - name: "Push to  Nexus"
       stage: release
       before_script:
       if: branch = master AND commit_message = /(^release$)/
