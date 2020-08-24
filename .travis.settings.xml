@@ -3,8 +3,8 @@
    <servers>
       <server>
          <id>alfresco-public</id>
-         <username>${env.MAVEN_USERNAME}</username>
-         <password>${env.MAVEN_PASSWORD}</password>
+         <username>${env.NEXUS_USERNAME}</username>
+         <password>${env.NEXUS_PASSWORD}</password>
       </server>
    </servers>
 </settings>
