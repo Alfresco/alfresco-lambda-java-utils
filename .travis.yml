@@ -19,34 +19,20 @@ git:
   quiet: true
 
 stages:
-  - build and test
+  - build
   - release
 
 jobs:
   include:
     - name: "Build and Test"
-      stage: build and test
+      stage: build
       script:
-        - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-        - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-        - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
-        - export  AWS_REGION=${AWS_REGION}
         - mvn clean install
-    - name: "Push to Nexus"
+    - name: "Push to  Nexus"
       stage: release
-      on:
-        branch: master
+      before_script:
+      if: branch = master AND commit_message =~ /\[release\]/
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
-      if: branch = master
       script:
-        - echo "I am here"
-#      script:
-#        - |
-#          if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_COMMIT_MESSAGE}" == *"[release]"* ]]
-#          then
-#            git checkout -B "${TRAVIS_BRANCH}"
-#            git config user.email "${GIT_EMAIL}"
-#            echo "WORKS"
-#          fi
-#          echo "NOPE1"
+        - echo "I am here not"
