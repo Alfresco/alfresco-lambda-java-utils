@@ -35,4 +35,4 @@ jobs:
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
       script:
-        - echo "I am here"
+        - echo "I am here not"
