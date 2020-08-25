@@ -35,4 +35,14 @@ jobs:
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
       script:
+        - export VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
         - mvn -B -V deploy -DskipTests
+      deploy:
+        provider: s3
+        access_key_id: "${AWS_ACCESS_KEY_ID}"
+        secret_access_key: "${AWS_SECRET_ACCESS_KEY}"
+        bucket: "alfresco-artefacts-staging"
+        skip_cleanup: true
+        region: "${AWS_REGION}"
+        local_dir: "deploy_dir"
+        upload-dir: "/enterprise/alfresco-lambda-java-utils/${VERSION}"
