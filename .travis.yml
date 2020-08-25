@@ -6,8 +6,8 @@ jdk:
   - openjdk11
 
 # the cache can grow constantly
-before_cache:
-  - rm -rf $HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils
+#before_cache:
+#  - rm -rf $HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils
 
 cache:
   directories:
