@@ -44,5 +44,5 @@ jobs:
         bucket: "alfresco-artefacts-staging"
         skip_cleanup: true
         region: "${AWS_REGION}"
-        local_dir: "/target"
+        local_dir: "$HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils/${VERSION}"
         upload-dir: "/enterprise/alfresco-lambda-java-utils/${VERSION}"
