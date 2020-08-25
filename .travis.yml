@@ -35,4 +35,4 @@ jobs:
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
       script:
-        - echo "I am here not"
+        - mvn release:prepare release:perform -Dusername=${NEXUS_USERNAME} -Dpassword=${NEXUS_PASSWORD}
