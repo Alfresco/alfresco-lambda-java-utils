@@ -36,7 +36,7 @@ jobs:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
       script:
         - export VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-        - mvn -B -V deploy -DskipTests
+#        - mvn -B -V deploy -DskipTests
       deploy:
         provider: s3
         access_key_id: "${AWS_ACCESS_KEY_ID}"
