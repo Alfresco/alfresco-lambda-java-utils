@@ -6,8 +6,8 @@ jdk:
   - openjdk11
 
 # the cache can grow constantly
-#before_cache:
-#  - rm -rf $HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils
+before_cache:
+  - rm -rf $HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils
 
 cache:
   directories:
@@ -28,21 +28,11 @@ jobs:
       stage: build
       script:
         - mvn clean install
-    - name: "Push to  Nexus"
+    - name: "Push to Nexus"
       stage: release
       before_script:
       if: branch = master AND commit_message =~ /\[release\]/
       before_install:
         - "cp .travis.settings.xml $HOME/.m2/settings.xml"
       script:
-        - export VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-#        - mvn -B -V deploy -DskipTests
-      deploy:
-        provider: s3
-        access_key_id: "${AWS_ACCESS_KEY_ID}"
-        secret_access_key: "${AWS_SECRET_ACCESS_KEY}"
-        bucket: "alfresco-artefacts-staging"
-        skip_cleanup: true
-        region: "${AWS_REGION}"
-        local_dir: "$HOME/.m2/repository/org/alfresco/alfresco-lambda-java-utils/${VERSION}"
-        upload-dir: "/enterprise/alfresco-lambda-java-utils/${VERSION}"
+        - mvn -B -V deploy -DskipTests
